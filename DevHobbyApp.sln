@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevHobby.Win", "DevHobby.Wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevHobby.Wpf", "DevHobby.Wpf\DevHobby.Wpf.csproj", "{BFCD6EA8-E9DA-4702-A5DC-ACE0FB575FB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevHobyy.Web", "DevHobyy.Web\DevHobyy.Web.csproj", "{158F30CB-0AE3-4842-A3F8-ABEDB8D751EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevHobby.Web", "DevHobyy.Web\DevHobby.Web.csproj", "{158F30CB-0AE3-4842-A3F8-ABEDB8D751EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testy", "Testy", "{946FE808-EAE6-4287-8B7A-4C3C0593B42A}"
 EndProject
