@@ -2,7 +2,6 @@
 {
     public class EmailSevice
     {
-
         /// <summary>
         /// Wysyła wiadomosc email.
         /// </summary>
