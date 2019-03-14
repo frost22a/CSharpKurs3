@@ -1,10 +1,25 @@
-﻿namespace DevHobby.BLL
+﻿using System;
+
+namespace DevHobby.BLL
 {
     /// <summary>
     /// Zarzadza produktami
     /// </summary>
     public class Produkt
     {
+        public Produkt()
+        {
+            Console.WriteLine("Produkt został utworzony");
+        }
+
+        public Produkt(int produktId, string nazwaProduktu, string opis) : this()
+        {
+            this.ProduktId = produktId;
+            this.NazwaProduktu = nazwaProduktu;
+            this.Opis = opis;
+            Console.WriteLine("Produkt ma nazwe: " + nazwaProduktu);
+        }
+
         private int produktId;
 
         public int ProduktId
