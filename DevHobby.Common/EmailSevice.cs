@@ -15,8 +15,7 @@
 
 
             var potwierdzenie = "Wiadomość wysłana: " + temat;
-            var logowanieService = new LogowanieService();
-            logowanieService.Logowanie(potwierdzenie);
+            LogowanieService.Logowanie(potwierdzenie);
 
             return potwierdzenie;
         }
