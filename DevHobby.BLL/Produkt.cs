@@ -13,6 +13,7 @@ namespace DevHobby.BLL
         public Produkt()
         {
             Console.WriteLine("Produkt został utworzony");
+            //this.DostawcaProduktu = new Dostawca();
         }
 
         public Produkt(int produktId, string nazwaProduktu, string opis) : this()
@@ -48,12 +49,27 @@ namespace DevHobby.BLL
             get { return opis; }
             set { opis = value; }
         }
+
+        private Dostawca dostawcaProduktu;
+
+        public Dostawca DostawcaProduktu
+        {
+            get
+            {
+                if (dostawcaProduktu == null)
+                {
+                    dostawcaProduktu = new Dostawca();
+                }
+                return dostawcaProduktu;
+            }
+            set { dostawcaProduktu = value; }
+        }
         #endregion
 
         public string PowiedzWitaj()
         {
-            var dostawca = new Dostawca();
-            dostawca.WyslijEmailWitamy("Wiadomosc z produktu");
+            //var dostawca = new Dostawca();
+            //dostawca.WyslijEmailWitamy("Wiadomosc z produktu");
 
             var emailServices = new EmailSevice();
             var potwierdzenie = emailServices.WyslijWiadomosc("Nowy produkt", this.NazwaProduktu, "marketing@dev-hobby.pl");

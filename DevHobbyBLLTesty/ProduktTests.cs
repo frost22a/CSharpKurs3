@@ -13,6 +13,7 @@ namespace DevHobby.BLL.Tests
             produkt.ProduktId = 1;
             produkt.NazwaProduktu = "Biurko";
             produkt.Opis = "Czerwone biurko";
+            produkt.DostawcaProduktu.NazwaFirmy = "DevHobby";
             var oczekiwana = "Witaj Biurko (1): Czerwone biurko";
 
             //ACT (działaj)
