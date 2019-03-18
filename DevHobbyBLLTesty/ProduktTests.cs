@@ -56,5 +56,20 @@ namespace DevHobby.BLL.Tests
             // Assert (potwierdz test)           
             Assert.AreEqual(oczekiwana, aktualna);
         }
+
+        [TestMethod()]
+        public void Produkt_NullTest() 
+        {
+            // Arrange (zaranżuj test)
+            Produkt produkt = null;
+
+            string oczekiwana = null;
+
+            //ACT (działaj)
+            var aktualna = produkt?.DostawcaProduktu?.NazwaFirmy;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
     }
 }
