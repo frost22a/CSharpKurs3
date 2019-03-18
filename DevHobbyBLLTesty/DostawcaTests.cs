@@ -1,10 +1,10 @@
 ﻿using DevHobby.BLL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DevHobbyBLLTesty
+namespace DevHobby.BLL.Tests 
 {
     [TestClass]
-    public class DostawcaTesty
+    public class DostawcaTests
     {
         [TestMethod]
         public void WyslijEmailWitamy_PrawidlowaNazwaFirmy_Sukces() 
