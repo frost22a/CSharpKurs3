@@ -14,7 +14,7 @@ namespace DevHobby.BLL.Tests
             produkt.NazwaProduktu = "Biurko";
             produkt.Opis = "Czerwone biurko";
             produkt.DostawcaProduktu.NazwaFirmy = "DevHobby";
-            var oczekiwana = "Witaj Biurko (1): Czerwone biurko";
+            var oczekiwana = "Witaj Biurko (1): Czerwone biurko Dostępny od : ";
 
             //ACT (działaj)
             var aktualna = produkt.PowiedzWitaj();
@@ -28,7 +28,7 @@ namespace DevHobby.BLL.Tests
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt(1,"Biurko", "Czerwone biurko");          
-            var oczekiwana = "Witaj Biurko (1): Czerwone biurko";
+            var oczekiwana = "Witaj Biurko (1): Czerwone biurko Dostępny od : ";
 
             //ACT (działaj)
             var aktualna = produkt.PowiedzWitaj();
@@ -48,7 +48,7 @@ namespace DevHobby.BLL.Tests
                 Opis = "Czerwone biurko"
             };
 
-            var oczekiwana = "Witaj Biurko (1): Czerwone biurko";
+            var oczekiwana = "Witaj Biurko (1): Czerwone biurko Dostępny od : ";
 
             //ACT (działaj)
             var aktualna = produkt.PowiedzWitaj();

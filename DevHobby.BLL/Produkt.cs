@@ -64,6 +64,15 @@ namespace DevHobby.BLL
             }
             set { dostawcaProduktu = value; }
         }
+
+        private DateTime? dataDostepnosci;
+
+        public DateTime? DataDostepnosci
+        {
+            get { return dataDostepnosci; }
+            set { dataDostepnosci = value; }
+        }
+
         #endregion
 
         public string PowiedzWitaj()
@@ -77,7 +86,8 @@ namespace DevHobby.BLL
             var wynik = Logowanie("Powiadziano Witaj");
 
 
-            return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis;
+            return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis
+                            + " Dostępny od : " + DataDostepnosci?.ToShortDateString();
         }
     }
 }
