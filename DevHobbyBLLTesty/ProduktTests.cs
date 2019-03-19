@@ -84,5 +84,33 @@ namespace DevHobby.BLL.Tests
             // Assert (potwierdz test)           
             Assert.AreEqual(oczekiwana, aktualna);
         }
+
+        [TestMethod()]
+        public void MinimalnaCena_DomyslnaTest() 
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt();
+            var oczekiwana = 10.50m;
+
+            //ACT (działaj)
+            var aktualna = produkt.MinimalnaCena;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+
+        [TestMethod()]
+        public void MinimalnaCena_KrzesloTest() 
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt(1, "Krzesło obrotowe", "opis");
+            var oczekiwana = 120.99m;
+
+            //ACT (działaj)
+            var aktualna = produkt.MinimalnaCena;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
     }
 }
