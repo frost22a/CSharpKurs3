@@ -127,5 +127,59 @@ namespace DevHobby.BLL.Tests
             // Assert (potwierdz test)           
             Assert.AreEqual(oczekiwana, aktualna);
         }
+
+        [TestMethod()]
+        public void NazwaProduktu_ZakrotkaTest()
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt(); 
+            produkt.NazwaProduktu = "Krz";
+            string oczekiwana = null;
+            string oczekiwanaWiadomosc = "Nazwa produktu musi być dłuższa niż 4 znaki";
+
+            //ACT (działaj)
+            var aktualna = produkt.NazwaProduktu;
+            var aktualnaWiadomosc = produkt.Wiadomosc;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+            Assert.AreEqual(oczekiwanaWiadomosc, aktualnaWiadomosc);
+        }
+
+        [TestMethod()]
+        public void NazwaProduktu_ZadlugaTest() 
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt();
+            produkt.NazwaProduktu = "Krzesło obrotowe zbyt długa nazwa ";
+            string oczekiwana = null;
+            string oczekiwanaWiadomosc = "Nazwa produktu musi być krótsza niż 30 znaków";
+
+            //ACT (działaj)
+            var aktualna = produkt.NazwaProduktu;
+            var aktualnaWiadomosc = produkt.Wiadomosc;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+            Assert.AreEqual(oczekiwanaWiadomosc, aktualnaWiadomosc);
+        }
+
+        [TestMethod()]
+        public void NazwaProduktu_PrawidlowaTest() 
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt();
+            produkt.NazwaProduktu = "Krzesło obrotowe";
+            string oczekiwana = "Krzesło obrotowe";
+            string oczekiwanaWiadomosc = null;
+
+            //ACT (działaj)
+            var aktualna = produkt.NazwaProduktu;
+            var aktualnaWiadomosc = produkt.Wiadomosc;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+            Assert.AreEqual(oczekiwanaWiadomosc, aktualnaWiadomosc);
+        }
     }
 }
