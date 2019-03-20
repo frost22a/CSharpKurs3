@@ -181,5 +181,63 @@ namespace DevHobby.BLL.Tests
             Assert.AreEqual(oczekiwana, aktualna);
             Assert.AreEqual(oczekiwanaWiadomosc, aktualnaWiadomosc);
         }
+
+        [TestMethod()]
+        public void Kategoria_WartoscDomyslnaTest() 
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt();
+            string oczekiwana = "Informatyka";
+
+            //ACT (działaj)
+            var aktualna = produkt.Kategoria;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+
+        [TestMethod()]
+        public void Kategoria_NowaWartoscTest()
+        { 
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt();
+            produkt.Kategoria = "Geografia";
+            var oczekiwana = "Geografia";
+
+            //ACT (działaj)
+            var aktualna = produkt.Kategoria;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+
+        [TestMethod()]
+        public void Numer_WartoscDomyslnaTest()
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt();
+            var oczekiwana = 1;
+
+            //ACT (działaj)
+            var aktualna = produkt.Numer;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+
+        [TestMethod()]
+        public void Numer_NowaWartoscTest()
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt();
+            produkt.Numer = 400;
+            var oczekiwana = 400;
+             
+            //ACT (działaj)
+            var aktualna = produkt.Numer;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
     }
 }
