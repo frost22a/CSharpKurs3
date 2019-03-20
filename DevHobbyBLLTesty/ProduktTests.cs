@@ -112,5 +112,20 @@ namespace DevHobby.BLL.Tests
             // Assert (potwierdz test)           
             Assert.AreEqual(oczekiwana, aktualna);
         }
+
+        [TestMethod()]
+        public void NazwaProduktu_FormatTest() 
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt();
+            produkt.NazwaProduktu = "  Krzesło obrotowe  ";
+            var oczekiwana = "Krzesło obrotowe";
+
+            //ACT (działaj)
+            var aktualna = produkt.NazwaProduktu;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
     }
 }
