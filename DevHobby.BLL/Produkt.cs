@@ -103,8 +103,10 @@ namespace DevHobby.BLL
         public string Wiadomosc { get; private set; }
 
         internal string Kategoria { get; set; }
+
         public int Numer { get; set; } = 1;
 
+        public string KodProduktu => this.Kategoria + " - " + this.Numer;
 
         #endregion
 
