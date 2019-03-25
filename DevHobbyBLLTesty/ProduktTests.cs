@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using DevHobby.BLL;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DevHobby.BLL.Tests
 {
@@ -24,10 +25,10 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void PowiedzWitaj_SparametryzowanyKonstruktorTest()  
+        public void PowiedzWitaj_SparametryzowanyKonstruktorTest()
         {
             // Arrange (zaranżuj test)
-            var produkt = new Produkt(1,"Biurko", "Czerwone biurko");          
+            var produkt = new Produkt(1, "Biurko", "Czerwone biurko");
             var oczekiwana = "Witaj Biurko (1): Czerwone biurko Dostępny od : ";
 
             //ACT (działaj)
@@ -38,7 +39,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void PowiedzWitaj_InicjalizatorObiektuTest() 
+        public void PowiedzWitaj_InicjalizatorObiektuTest()
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt
@@ -58,7 +59,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void Produkt_NullTest() 
+        public void Produkt_NullTest()
         {
             // Arrange (zaranżuj test)
             Produkt produkt = null;
@@ -73,7 +74,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void Konwersja_CaliNaMetrTest() 
+        public void Konwersja_CaliNaMetrTest()
         {
             // Arrange (zaranżuj test)
             var oczekiwana = 194.35;
@@ -86,7 +87,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void MinimalnaCena_DomyslnaTest() 
+        public void MinimalnaCena_DomyslnaTest()
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt();
@@ -100,7 +101,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void MinimalnaCena_KrzesloTest() 
+        public void MinimalnaCena_KrzesloTest()
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt(1, "Krzesło obrotowe", "opis");
@@ -114,7 +115,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void NazwaProduktu_FormatTest() 
+        public void NazwaProduktu_FormatTest()
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt();
@@ -132,7 +133,7 @@ namespace DevHobby.BLL.Tests
         public void NazwaProduktu_ZakrotkaTest()
         {
             // Arrange (zaranżuj test)
-            var produkt = new Produkt(); 
+            var produkt = new Produkt();
             produkt.NazwaProduktu = "Krz";
             string oczekiwana = null;
             string oczekiwanaWiadomosc = "Nazwa produktu musi być dłuższa niż 4 znaki";
@@ -147,7 +148,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void NazwaProduktu_ZadlugaTest() 
+        public void NazwaProduktu_ZadlugaTest()
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt();
@@ -165,7 +166,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void NazwaProduktu_PrawidlowaTest() 
+        public void NazwaProduktu_PrawidlowaTest()
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt();
@@ -183,7 +184,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void Kategoria_WartoscDomyslnaTest() 
+        public void Kategoria_WartoscDomyslnaTest()
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt();
@@ -198,7 +199,7 @@ namespace DevHobby.BLL.Tests
 
         [TestMethod()]
         public void Kategoria_NowaWartoscTest()
-        { 
+        {
             // Arrange (zaranżuj test)
             var produkt = new Produkt();
             produkt.Kategoria = "Geografia";
@@ -232,7 +233,7 @@ namespace DevHobby.BLL.Tests
             var produkt = new Produkt();
             produkt.Numer = 400;
             var oczekiwana = 400;
-             
+
             //ACT (działaj)
             var aktualna = produkt.Numer;
 
@@ -241,7 +242,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void KodProduktu_WartoscDomyslnaTest() 
+        public void KodProduktu_WartoscDomyslnaTest()
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt();
@@ -265,6 +266,21 @@ namespace DevHobby.BLL.Tests
 
             //ACT (działaj)
             var aktualna = produkt.KodProduktu;
+
+            // Assert (potwierdz test)           
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+
+        [TestMethod()]
+        public void ObliczSugerowanaCenaTest()
+        {
+            // Arrange (zaranżuj test)
+            var produkt = new Produkt(1, "Biurko", "opis");
+            produkt.Koszt = 200m;
+            var oczekiwana = 220m;
+
+            //ACT (działaj)
+            var aktualna = produkt.ObliczSugerowanaCena(10);
 
             // Assert (potwierdz test)           
             Assert.AreEqual(oczekiwana, aktualna);
