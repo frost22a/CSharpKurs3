@@ -37,26 +37,7 @@ namespace DevHobby.BLL
         /// <returns></returns>
         public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc)
         {
-            if (produkt == null)
-                throw new ArgumentNullException(nameof(produkt));
-            if (ilosc <= 0)
-                throw new ArgumentOutOfRangeException(nameof(ilosc));
-
-            var sukces = false;
-
-            var tekstZamowienia = "Zamowienie z DevHobby.pl" + Environment.NewLine +
-                                  "Produkt: " + produkt.KodProduktu + Environment.NewLine +
-                                  "Ilość: " + ilosc;
-
-            var emailService = new EmailSevice();
-            var potwierdzenie = emailService.WyslijWiadomosc("Nowe zamówienie", tekstZamowienia, this.Email);
-
-            if (potwierdzenie.StartsWith("Wiadomość wysłana: "))
-                sukces = true;
-
-            var wynikOperacji = new WynikOperacji(sukces, tekstZamowienia);
-
-            return wynikOperacji;
+            return ZlozZamowienie(produkt, ilosc, null, null);
         }
 
         /// <summary>
@@ -68,33 +49,7 @@ namespace DevHobby.BLL
         /// <returns></returns>
         public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc, DateTimeOffset? data)
         {
-            if (produkt == null)
-                throw new ArgumentNullException(nameof(produkt));
-            if (ilosc <= 0)
-                throw new ArgumentOutOfRangeException(nameof(ilosc));
-            if (data <= DateTimeOffset.Now)
-                throw new ArgumentOutOfRangeException(nameof(data));
-
-            var sukces = false;
-
-            var tekstZamowienia = "Zamowienie z DevHobby.pl" + Environment.NewLine +
-                                  "Produkt: " + produkt.KodProduktu + Environment.NewLine +
-                                  "Ilość: " + ilosc;
-
-            if (data.HasValue)
-            {
-                tekstZamowienia += Environment.NewLine + "Data dostawy: " + data.Value.ToString("d");
-            }
-
-            var emailService = new EmailSevice();
-            var potwierdzenie = emailService.WyslijWiadomosc("Nowe zamówienie", tekstZamowienia, this.Email);
-
-            if (potwierdzenie.StartsWith("Wiadomość wysłana: "))
-                sukces = true;
-
-            var wynikOperacji = new WynikOperacji(sukces, tekstZamowienia);
-
-            return wynikOperacji;
+            return ZlozZamowienie(produkt, ilosc, data, null);
         }
 
         /// <summary>
