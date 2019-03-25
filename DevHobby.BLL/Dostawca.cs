@@ -1,4 +1,5 @@
 ﻿using DevHobby.Common;
+using System;
 
 namespace DevHobby.BLL
 {
@@ -13,6 +14,7 @@ namespace DevHobby.BLL
         public string Email { get; set; }
         #endregion
 
+        #region Metody
         /// <summary>
         /// Wysyla wiadomosc email, aby powitac nowego dostawce.
         /// </summary>
@@ -26,5 +28,34 @@ namespace DevHobby.BLL
 
             return potwierdzenie;
         }
+
+        /// <summary>
+        /// Wysyła zamówienie na produkt do dostawcy
+        /// </summary>
+        /// <param name="produkt">Produkt do zamówienia.</param>
+        /// <param name="ilosc">Ilość produktu do zamówienia.</param>
+        /// <returns></returns>
+        public bool ZlozZamowienie(Produkt produkt, int ilosc)
+        {
+            if (produkt == null)
+                throw new ArgumentNullException(nameof(produkt));
+            if (ilosc <= 0)
+                throw new ArgumentOutOfRangeException(nameof(ilosc));
+
+            var sukces = false;
+
+            var tekstZamowienia = "Zamowienie z DevHobby.pl" + Environment.NewLine +
+                                  "Produkt: " + produkt.KodProduktu + Environment.NewLine +
+                                  "Ilość: " + ilosc;
+
+            var emailService = new EmailSevice();
+            var potwierdzenie = emailService.WyslijWiadomosc("Nowe zamówienie", tekstZamowienia, this.Email);
+
+            if (potwierdzenie.StartsWith("Wiadomość wysłana: "))
+                sukces = true;
+
+            return sukces;
+        }
+        #endregion
     }
 }

@@ -1,13 +1,14 @@
 ﻿using DevHobby.BLL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
-namespace DevHobby.BLL.Tests 
+namespace DevHobby.BLL.Tests
 {
     [TestClass]
     public class DostawcaTests
     {
         [TestMethod]
-        public void WyslijEmailWitamy_PrawidlowaNazwaFirmy_Sukces() 
+        public void WyslijEmailWitamy_PrawidlowaNazwaFirmy_Sukces()
         {
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
@@ -22,7 +23,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod]
-        public void WyslijEmailWitamy_PustaNazwaFirmy_Sukces() 
+        public void WyslijEmailWitamy_PustaNazwaFirmy_Sukces()
         {
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
@@ -37,7 +38,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod]
-        public void WyslijEmailWitamy_NullNazwaFirmy_Sukces() 
+        public void WyslijEmailWitamy_NullNazwaFirmy_Sukces()
         {
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
@@ -49,6 +50,50 @@ namespace DevHobby.BLL.Tests
 
             // Assert (potwierdz test)
             Assert.AreEqual(wartoscOczekiwana, wartoscAktualna);
+        }
+
+        [TestMethod()]
+        public void ZlozZamowienieTest()
+        {
+            // Arrange (zaranżuj test)
+            var dostawca = new Dostawca();
+            var produkt = new Produkt(1, "Biurko","opis");
+            var wartoscOczekiwana = true;
+
+            //ACT (działaj)
+            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15);
+
+            // Assert (potwierdz test)
+            Assert.AreEqual(wartoscOczekiwana, wartoscAktualna);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ZlozZamowienie_NullProdukt_ExcepitonTest() 
+        { 
+            // Arrange (zaranżuj test)
+            var dostawca = new Dostawca();
+
+            //ACT (działaj)
+            var wartoscAktualna = dostawca.ZlozZamowienie(null, 15);
+
+            // Assert (potwierdz test)
+            // oczekiwany wyjatek
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ZlozZamowienie_Ilosc_ExcepitonTest() 
+        {
+            // Arrange (zaranżuj test)
+            var dostawca = new Dostawca();
+            var produkt = new Produkt(1, "Biurko", "opis");
+
+            //ACT (działaj)
+            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 0);
+
+            // Assert (potwierdz test)
+            // oczekiwany wyjatek
         }
     }
 }
