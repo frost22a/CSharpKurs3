@@ -70,6 +70,38 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
+        public void ZlozZamowienie3parametryTest() 
+        {
+            // Arrange (zaranżuj test)
+            var dostawca = new Dostawca();
+            var produkt = new Produkt(1, "Biurko", "opis");
+            var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nData dostawy: 2019-04-22");
+
+            //ACT (działaj)
+            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, new DateTimeOffset(2019,4,22,0,0,0, new TimeSpan(8,0,0)));
+
+            // Assert (potwierdz test)
+            Assert.AreEqual(wartoscOczekiwana.Sukces, wartoscAktualna.Sukces);
+            Assert.AreEqual(wartoscOczekiwana.Wiadomosc, wartoscAktualna.Wiadomosc);
+        }
+
+        [TestMethod()]
+        public void ZlozZamowienie4parametryTest()
+        {
+            // Arrange (zaranżuj test)
+            var dostawca = new Dostawca();
+            var produkt = new Produkt(1, "Biurko", "opis");
+            var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nData dostawy: 2019-04-22\r\nInstrukcje: testowe instrukcje");
+
+            //ACT (działaj)
+            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, new DateTimeOffset(2019, 4, 22, 0, 0, 0, new TimeSpan(8, 0, 0)), "testowe instrukcje");
+
+            // Assert (potwierdz test)
+            Assert.AreEqual(wartoscOczekiwana.Sukces, wartoscAktualna.Sukces);
+            Assert.AreEqual(wartoscOczekiwana.Wiadomosc, wartoscAktualna.Wiadomosc);
+        }
+
+        [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ZlozZamowienie_NullProdukt_ExcepitonTest() 
         { 
