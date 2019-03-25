@@ -35,7 +35,7 @@ namespace DevHobby.BLL
         /// <param name="produkt">Produkt do zamówienia.</param>
         /// <param name="ilosc">Ilość produktu do zamówienia.</param>
         /// <returns></returns>
-        public bool ZlozZamowienie(Produkt produkt, int ilosc)
+        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc)
         {
             if (produkt == null)
                 throw new ArgumentNullException(nameof(produkt));
@@ -54,7 +54,9 @@ namespace DevHobby.BLL
             if (potwierdzenie.StartsWith("Wiadomość wysłana: "))
                 sukces = true;
 
-            return sukces;
+            var wynikOperacji = new WynikOperacji(sukces, tekstZamowienia);
+
+            return wynikOperacji;
         }
         #endregion
     }

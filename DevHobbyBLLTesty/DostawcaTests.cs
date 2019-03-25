@@ -1,4 +1,5 @@
 ﻿using DevHobby.BLL;
+using DevHobby.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -58,13 +59,14 @@ namespace DevHobby.BLL.Tests
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
             var produkt = new Produkt(1, "Biurko","opis");
-            var wartoscOczekiwana = true;
+            var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15");
 
             //ACT (działaj)
             var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15);
 
             // Assert (potwierdz test)
-            Assert.AreEqual(wartoscOczekiwana, wartoscAktualna);
+            Assert.AreEqual(wartoscOczekiwana.Sukces, wartoscAktualna.Sukces);
+            Assert.AreEqual(wartoscOczekiwana.Wiadomosc, wartoscAktualna.Wiadomosc);
         }
 
         [TestMethod()]

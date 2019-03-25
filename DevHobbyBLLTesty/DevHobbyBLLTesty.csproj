@@ -61,6 +61,10 @@
       <Project>{F6E2A0DA-63E2-4BA4-9216-68E8ADC2B103}</Project>
       <Name>DevHobby.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DevHobby.Common\DevHobby.Common.csproj">
+      <Project>{54F658A8-4E13-4F4B-9579-56C455621636}</Project>
+      <Name>DevHobby.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
