@@ -58,7 +58,7 @@ namespace DevHobby.BLL.Tests
         {
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
-            var produkt = new Produkt(1, "Biurko","opis");
+            var produkt = new Produkt(1, "Biurko", "opis");
             var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15");
 
             //ACT (działaj)
@@ -70,7 +70,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void ZlozZamowienie3parametryTest() 
+        public void ZlozZamowienie3parametryTest()
         {
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
@@ -78,7 +78,7 @@ namespace DevHobby.BLL.Tests
             var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nData dostawy: 2019-04-22");
 
             //ACT (działaj)
-            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, new DateTimeOffset(2019,4,22,0,0,0, new TimeSpan(8,0,0)));
+            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, new DateTimeOffset(2019, 4, 22, 0, 0, 0, new TimeSpan(8, 0, 0)));
 
             // Assert (potwierdz test)
             Assert.AreEqual(wartoscOczekiwana.Sukces, wartoscAktualna.Sukces);
@@ -103,8 +103,8 @@ namespace DevHobby.BLL.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ZlozZamowienie_NullProdukt_ExcepitonTest() 
-        { 
+        public void ZlozZamowienie_NullProdukt_ExcepitonTest()
+        {
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
 
@@ -117,7 +117,7 @@ namespace DevHobby.BLL.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void ZlozZamowienie_Ilosc_ExcepitonTest() 
+        public void ZlozZamowienie_Ilosc_ExcepitonTest()
         {
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
@@ -128,6 +128,22 @@ namespace DevHobby.BLL.Tests
 
             // Assert (potwierdz test)
             // oczekiwany wyjatek
+        }
+
+        [TestMethod()]
+        public void ZlozZamowienie_DolaczAdresTest()
+        {
+            // Arrange(zaranżuj test)
+            var dostawca = new Dostawca();
+            var produkt = new Produkt(1, "Biurko", "opis");
+            var wartoscOczekiwana = new WynikOperacji(true, "Tekst zamówienia Dołączamy adres");
+
+            //ACT (działaj)
+            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, true, false);
+
+            // Assert (potwierdz test)
+            Assert.AreEqual(wartoscOczekiwana.Sukces, wartoscAktualna.Sukces);
+            Assert.AreEqual(wartoscOczekiwana.Wiadomosc, wartoscAktualna.Wiadomosc);
         }
     }
 }
