@@ -139,7 +139,7 @@ namespace DevHobby.BLL.Tests
             var wartoscOczekiwana = new WynikOperacji(true, "Tekst zamówienia Dołączamy adres");
 
             //ACT (działaj)
-            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, dolaczAdres: true, wyslijKopie: false);
+            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, Dostawca.DolaczAdres.Tak, Dostawca.WyslijKopie.Nie);
 
             // Assert (potwierdz test)
             Assert.AreEqual(wartoscOczekiwana.Sukces, wartoscAktualna.Sukces);

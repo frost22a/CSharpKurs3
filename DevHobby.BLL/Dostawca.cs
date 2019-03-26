@@ -8,6 +8,9 @@ namespace DevHobby.BLL
     /// </summary>
     public class Dostawca
     {
+        public enum DolaczAdres { Tak, Nie };
+        public enum WyslijKopie { Tak, Nie };
+
         #region Pola i Własciwosci
         public int DostawcaId { get; set; }
         public string NazwaFirmy { get; set; }
@@ -104,14 +107,14 @@ namespace DevHobby.BLL
         /// <param name="dolaczAdres">True, jeśli zawiera adres wysyłki.</param>
         /// <param name="wyslijKopie">True, jeśli wysyłamy kopie wiadomości e-mail</param>
         /// <returns>Flaga sukcesu i tekst zamówienia</returns>
-        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc, bool dolaczAdres, bool wyslijKopie)
+        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc, DolaczAdres dolaczAdres, WyslijKopie wyslijKopie)
         {
             var tekstZamowienia = "Tekst zamówienia";
 
-            if (dolaczAdres)
+            if (dolaczAdres == DolaczAdres.Tak)
                 tekstZamowienia += " Dołączamy adres";
 
-            if (wyslijKopie)
+            if (wyslijKopie == WyslijKopie.Tak)
                 tekstZamowienia += " Wysłamy kopie";
 
             var wynikOperacji = new WynikOperacji(true, tekstZamowienia);
