@@ -59,7 +59,7 @@ namespace DevHobby.BLL.Tests
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
             var produkt = new Produkt(1, "Biurko", "opis");
-            var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15");
+            var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nInstrukcje: Standartowa dostawa");
 
             //ACT (działaj)
             var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15);
@@ -75,7 +75,7 @@ namespace DevHobby.BLL.Tests
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
             var produkt = new Produkt(1, "Biurko", "opis");
-            var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nData dostawy: 2019-04-22");
+            var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nData dostawy: 2019-04-22\r\nInstrukcje: Standartowa dostawa");
 
             //ACT (działaj)
             var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, new DateTimeOffset(2019, 4, 22, 0, 0, 0, new TimeSpan(8, 0, 0)));
@@ -95,6 +95,22 @@ namespace DevHobby.BLL.Tests
 
             //ACT (działaj)
             var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, new DateTimeOffset(2019, 4, 22, 0, 0, 0, new TimeSpan(8, 0, 0)), "testowe instrukcje");
+
+            // Assert (potwierdz test)
+            Assert.AreEqual(wartoscOczekiwana.Sukces, wartoscAktualna.Sukces);
+            Assert.AreEqual(wartoscOczekiwana.Wiadomosc, wartoscAktualna.Wiadomosc);
+        }
+
+        [TestMethod()]
+        public void ZlozZamowienieBrakDatyTest() 
+        {
+            // Arrange (zaranżuj test)
+            var dostawca = new Dostawca();
+            var produkt = new Produkt(1, "Biurko", "opis");
+            var wartoscOczekiwana = new WynikOperacji(true, "Zamowienie z DevHobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nInstrukcje: testowe instrukcje");
+
+            //ACT (działaj)
+            var wartoscAktualna = dostawca.ZlozZamowienie(produkt, 15, instrukcje: "testowe instrukcje");
 
             // Assert (potwierdz test)
             Assert.AreEqual(wartoscOczekiwana.Sukces, wartoscAktualna.Sukces);
