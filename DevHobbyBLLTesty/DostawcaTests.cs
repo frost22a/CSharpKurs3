@@ -102,7 +102,7 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void ZlozZamowienieBrakDatyTest() 
+        public void ZlozZamowienieBrakDatyTest()
         {
             // Arrange (zaranżuj test)
             var dostawca = new Dostawca();
@@ -160,6 +160,22 @@ namespace DevHobby.BLL.Tests
             // Assert (potwierdz test)
             Assert.AreEqual(wartoscOczekiwana.Sukces, wartoscAktualna.Sukces);
             Assert.AreEqual(wartoscOczekiwana.Wiadomosc, wartoscAktualna.Wiadomosc);
+        }
+
+        [TestMethod()]
+        public void ToStringTest()
+        {
+            // Arrange(zaranżuj test)
+            var dostawca = new Dostawca();
+            dostawca.DostawcaId = 2;
+            dostawca.NazwaFirmy = "DevHobby";
+            var wartoscOczekiwana = "Dostawca: DevHobby";
+
+            //ACT (działaj)
+            var wartoscAktualna = dostawca.ToString();
+
+            // Assert (potwierdz test)
+            Assert.AreEqual(wartoscOczekiwana, wartoscAktualna);
         }
     }
 }
