@@ -246,7 +246,7 @@ namespace DevHobby.BLL.Tests
         {
             // Arrange (zaranżuj test)
             var produkt = new Produkt();
-            var oczekiwana = "Informatyka - 1";
+            var oczekiwana = "Informatyka - 0001";
 
             //ACT (działaj)
             var aktualna = produkt.KodProduktu;
@@ -262,7 +262,7 @@ namespace DevHobby.BLL.Tests
             var produkt = new Produkt();
             produkt.Kategoria = "Historia";
             produkt.Numer = 10;
-            var oczekiwana = "Historia - 10";
+            var oczekiwana = "Historia - 0010";
 
             //ACT (działaj)
             var aktualna = produkt.KodProduktu;
