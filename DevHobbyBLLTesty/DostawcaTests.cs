@@ -177,5 +177,20 @@ namespace DevHobby.BLL.Tests
             // Assert (potwierdz test)
             Assert.AreEqual(wartoscOczekiwana, wartoscAktualna);
         }
+
+        [TestMethod()]
+        public void ZwrocTekstTest()
+        {
+            // Arrange(zaranżuj test)
+            var dostawca = new Dostawca();
+            var wartoscOczekiwana = @"Wstawiam \r\n nowa linia";
+
+            //ACT (działaj)
+            var wartoscAktualna = dostawca.ZwrocTekst();
+            Console.WriteLine(wartoscAktualna);
+
+            // Assert (potwierdz test)
+            Assert.AreEqual(wartoscOczekiwana, wartoscAktualna);
+        }
     }
 }
