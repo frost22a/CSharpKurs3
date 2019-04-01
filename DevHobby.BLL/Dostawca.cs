@@ -1,5 +1,6 @@
 ﻿using DevHobby.Common;
 using System;
+using System.Text;
 
 namespace DevHobby.BLL
 {
@@ -51,19 +52,21 @@ namespace DevHobby.BLL
 
             var sukces = false;
 
-            var tekstZamowienia = "Zamowienie z DevHobby.pl" + Environment.NewLine +
-                                  "Produkt: " + produkt.KodProduktu + Environment.NewLine +
-                                  "Ilość: " + ilosc;
+            var tekstZamowieniaBuilder = new StringBuilder("Zamowienie z DevHobby.pl" + Environment.NewLine +
+                                                           "Produkt: " + produkt.KodProduktu + Environment.NewLine +
+                                                           "Ilość: " + ilosc);
 
             if (data.HasValue)
             {
-                tekstZamowienia += Environment.NewLine + "Data dostawy: " + data.Value.ToString("d");
+                tekstZamowieniaBuilder.Append(Environment.NewLine + "Data dostawy: " + data.Value.ToString("d"));
             }
 
             if (!String.IsNullOrWhiteSpace(instrukcje))
             {
-                tekstZamowienia += Environment.NewLine + "Instrukcje: " + instrukcje;
+                tekstZamowieniaBuilder.Append(Environment.NewLine + "Instrukcje: " + instrukcje);
             }
+
+            var tekstZamowienia = tekstZamowieniaBuilder.ToString();
 
             var emailService = new EmailSevice();
             var potwierdzenie = emailService.WyslijWiadomosc("Nowe zamówienie", tekstZamowienia, this.Email);
