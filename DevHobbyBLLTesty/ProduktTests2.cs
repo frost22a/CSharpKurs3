@@ -1,6 +1,4 @@
 ﻿using DevHobby.BLL;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace DevHobby.BLL.Tests
 {
     [TestClass()]
