@@ -9,6 +9,7 @@ namespace DevHobby.BLL
     /// </summary>
     public class Dostawca
     {
+
         public enum DolaczAdres { Tak, Nie };
         public enum WyslijKopie { Tak, Nie };
 
